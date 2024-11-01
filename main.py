@@ -29,7 +29,6 @@ keywords = [
     "email security", "analyze email", "threat identification"
 ]
 
-
 # Function to read and process PDF content
 def read_pdf(file):
     pdf_reader = PdfReader(file)
@@ -37,7 +36,6 @@ def read_pdf(file):
     for page in pdf_reader.pages:
         text += page.extract_text()
     return text
-
 
 # Evaluate report function
 def evaluate_report(content):
@@ -52,7 +50,6 @@ def evaluate_report(content):
             feedback.append(f"Keyword '{keyword}' not found.")
 
     return score, feedback
-
 
 # Processing the uploaded file
 if uploaded_file:
@@ -80,5 +77,8 @@ if uploaded_file:
     # Display result based on score
     if score >= len(keywords) * 0.6:  # Pass if 60% of keywords are found
         st.success("Congratulations! You passed the evaluation.")
+        
+        # Link to certificate page
+        st.markdown("[Click here to view your certificate](certificate1.html)", unsafe_allow_html=True)
     else:
         st.warning("You did not pass. Try improving the report content.")
